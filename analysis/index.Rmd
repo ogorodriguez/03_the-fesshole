@@ -22,7 +22,7 @@ managed by
  
  **Content**
  
- 01. Introduction
+ 01. [Introduction](01_introduction.html)
  02. The Fesshole Spreadsheet 
  03. Exploratory Data Analysis
  04. Sentiment Analysis
