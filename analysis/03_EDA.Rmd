@@ -8,3 +8,78 @@ source(here::here("code", "01_packages.R"))
 source(here::here("code/02_knitr-global.R"))
 ```
 
+## Initial observations
+
+The current status of the working file with the fesshole data is
+
+```{r}
+# Read in rds file if required
+fesshole_new <- read_rds(here::here("data", "fesshole_new.rds"))
+```
+
+```{r}
+fesshole_new %>% 
+  glimpse()
+```
+
+The number of rows my differ upon updates done to the file.
+
+One of the first observations we can make is the number of words in each confession.  That way we
+can identify the longest confession, and when it was submitted.
+
+### Which is the longest confession?
+
+We can add a word count column that can estimate the number of words per confession using the
+`stringr::str_count()` function.
+
+We use `[\\w\']+` to identify words with apostrophes taking into account the number of letters 
+after the aposotrophy ([see here for reference.](https://stackoverflow.com/questions/8920145/count-the-number-of-all-words-in-a-string) )
+
+```{r}
+# Add a column with word counts
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  sample_n(5)
+  
+```
+
+
+Now let's the maximumn number of words that appear in our wordcount column
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  slice(which.max(wordcount)) %>% 
+  pull()
+```
+
+And when this was written...
+
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  slice(which.max(wordcount)) 
+
+```
+
+It was submitted on September 19, 2019.
+
+These are the top 10 longuest confessions.
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  arrange(desc(wordcount)) %>% 
+  head(10)
+```
+
+
+
+
+
+
+
+
+
+
