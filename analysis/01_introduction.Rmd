@@ -4,26 +4,49 @@ output: html_document
 ---
 
 ```{r global_options, include=FALSE}
-source(here::here("code/01_packages.R"))
+source(here::here("code", "01_packages.R"))
 source(here::here("code/02_knitr-global.R"))
 ```
 
-## R Markdown
+## Introducing the The Fesshole
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+The Fesshole is a twitter account where anonymous messages are posted, assuming they
+are sent by various people and that those confessions and thus true or have some sort
+of truth associated with them.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Any person can leave a confession anonymously by filling out a google form.  Confessions 
+are then subject to moderation by an accoun administrator.
 
-```{r cars}
-summary(cars)
-```
+For those interested in datasets and analysis, the admnistrator has made the spreadsheet
+collecting all the confessions publicly available.  This has been the motivation for me
+to start this project and see what type of questions we can make to tha data and if there
+are possibilites of modelling for prediction.
 
-## Including Plots
+Since anyone with access to the Form can send a confession, this is a mine for text analysis 
+and perhaps pattern detection.  Sentiment can be associated to each confession so we can 
+estimate whether the users are being happy or sad, angry or joyful.  Regarding the modelling 
+for prediction, I have thougth it would be good to try to see whether we can predict the
+sentiment of a confession based on the words used in them.
 
-You can also embed plots, for example:
+I have to admit some of these ideas may require skills I still need to master regarding
+data analysis and the tools that go with it.  This will be a good learning experience all the way.
 
-```{r pressure, echo = FALSE, warning = FALSE}
-plot(pressure)
-```
+## Useful links
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+ * The spreadsheet with all entries [can be found here.](https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978)
+ * The public form [can be found here.](https://docs.google.com/forms/d/e/1FAIpQLSc5XIfmezx_-fDnwpKC9QW_cC3MtrHTyVTOpPiWAIOlIu6RtA/viewformd)
+ * The twitter account with [all the confessions is here.](https://twitter.com/fesshole)
+ * [This is the account](https://twitter.com/robmanuel) of the administrator / moderator of The Fesshole.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+

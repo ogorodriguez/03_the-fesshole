@@ -1,0 +1,129 @@
+---
+title: "The Fesshole Spreadsheet"
+output: html_document
+---
+
+```{r global_options, include=FALSE}
+source(here::here("code", "01_packages.R"))
+source(here::here("code/02_knitr-global.R"))
+```
+
+## The Fesshole Spreadsheet
+
+[The Fesshole Spreadsheet](https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978) is a live document collecting all confession sent by any person
+who has access to the form.  That way, confessions can arrive at any given moment any day any time.  
+Confessions are all in English since its origin is a twitter account managed presumably from the UK, I believe.
+
+It consists of mainly two columns.  A third column host basic information about the spreadsheet 
+on the first three rows.  The first and second columns are the ones with the timestamp and
+the text of the confession respectively.
+
+![img_01 - First 11 rows of the Fesshole spreadsheet](images/01_fesshole-spread.png)
+
+## Importing the Fesshole Spreadsheet
+
+To import it to become part of the analysis we will need to do some rearranging during import.
+
+First we will import the raw spreadsheet as is using the `googlesheets4::read_sheet()` function.  
+Authentication to google drive may be required.
+
+The next steps will be commented out to keep the operations as minimum.  An RDS version of the
+file will be downloaded and used for analysis.  We can check creation time and modification time
+if needed to see if an update is required.
+
+I suggest updating the file if a minimum of 15 days have elapsed since tis creation.
+
+```{r, message = FALSE}
+# Run this if an updated version of the spreadsheet is needed for analysis
+# Save file as RDS in project folder
+# Un-comment to update and comment back again
+# fesshole_raw <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978", col_types = "c"  )
+
+```
+
+```{r}
+# Saving raw spreadsheet as rds
+# Un-comment when updating spreadsheet 
+# Comment back again when saving new updated raw RDS file
+# write_rds(fesshole_raw, here::here("data", "data_raw", "fesshole_raw.rds"))
+
+```
+
+Let's check the creation time of the fesshole_raw rds file.
+
+```{r}
+rds_created <- file.info(here::here("data", "data_raw", "fesshole_raw.rds"))$ctime
+rds_created
+```
+
+How many days have elapsed since file creation?
+
+```{r}
+round(Sys.time() - rds_created, 0)
+```
+
+If the difference is 15 days or more, please update and save as RDS the fesshole_raw file.  
+
+## Revising the raw file
+
+For the revision we will read the RDS file of the fesshole spreadsheet.
+
+```{r}
+fesshole_rds <- read_rds(here::here("data", "data_raw", "fesshole_raw.rds"))
+```
+
+Let's preview it
+
+```{r}
+fesshole_rds %>% 
+  head()
+```
+As indicated previously, the third column shows only general information regarding the confessions and
+can be safely removed.  
+
+During the import the column type selected was character thus affecting the timestamp column.  
+Timestamp will be reverted back to data using the lubridate function.
+
+We will rename the remaining columns to simplified the variables names and make them consistent.
+
+
+```{r}
+fesshole_new <- fesshole_rds %>% 
+  select(Timestamp, `What's your confession?`) %>% 
+  rename(confessions = `What's your confession?`,
+         timestamp = Timestamp) %>% 
+  mutate(timestamp = lubridate::mdy_hms(timestamp))
+
+```
+
+We will visualize a random selection of 5 rows from the data.
+
+```{r}
+fesshole_new %>%
+  dplyr::sample_n(5)
+```
+
+This did not require much data wrangling it seems.  We will save it as an rds version.  
+This will be commented out and only needs to be reactivated when updating fesshole_raw.
+
+```{r}
+# write_rds(fesshole_new, here::here("data", "fesshole_new.rds"))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

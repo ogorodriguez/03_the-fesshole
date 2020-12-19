@@ -10,6 +10,11 @@ editor_options:
 
 Welcome to my data analysis website of the dataset The Fesshole.
 
+**VERY IMPORTANT** 
+**As a warning, this dataset is made of expressions that may affect the sensibility of some
+since it contains profanity, words of sexual nature, and description of acts that may prove offensive.  
+Use and navigate at your own discretion**
+
 The Fesshole is a dataset in a google spreadsheet that collects the confessions
 sent by anonimous people that have access to an freely accessible only form called
 The Fesshole.  The form itself is available in a Twitter account of the same name
@@ -23,9 +28,9 @@ managed by
  **Content**
  
  01. [Introduction](01_introduction.html)
- 02. The Fesshole Spreadsheet 
+ 02. [The Fesshole Spreadsheet](02_spreadsheet.html) 
  03. Exploratory Data Analysis
  04. Sentiment Analysis
- 05. Modelling Sentiment
+ 05. Sentiment Predictive Model
  
  

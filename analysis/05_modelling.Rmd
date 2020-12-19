@@ -1,0 +1,10 @@
+---
+title: "Sentiment Predictive Model"
+output: html_document
+---
+
+```{r global_options, include=FALSE}
+source(here::here("code", "01_packages.R"))
+source(here::here("code/02_knitr-global.R"))
+```
+
