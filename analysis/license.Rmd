@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-The code is protected by the [MIT LICENSE](LICENSE.md)
+The code is protected by the MIT LICENSE. 
 
 This website is protected under the following license:
 [The Fesshole Data Analysis](https://ogorodriguez.github.io/03_the-fesshole/) by [Omar Gomez Rodriguez](https://github.com/ogorodriguez) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)
