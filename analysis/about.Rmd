@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About this website"
 output:
   workflowr::wflow_html:
     toc: false
@@ -8,3 +8,12 @@ editor_options:
 ---
 
 Describe your project.
+
+This project aims to analyse the [spreadsheet](https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978) of The Fesshole confessions form and twitter account.
+do some text analysis and modeling.
+
+An early stage of this project will include EDA and graphics to understand the data.
+
+Other stages will include analysis of the text to determine sentiment, and perhaps the 
+creation of models to predict sentiment based on words used in a confession.
+

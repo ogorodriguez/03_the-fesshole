@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "The Fesshole Data Analysis"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -8,4 +8,24 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+Welcome to my data analysis website of the dataset The Fesshole.
+
+The Fesshole is a dataset in a google spreadsheet that collects the confessions
+sent by anonimous people that have access to an freely accessible only form called
+The Fesshole.  The form itself is available in a Twitter account of the same name
+managed by 
+
+ * The spreadsheet with all entries [can be found here.](https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978)
+ * The public form [can be found here.](https://docs.google.com/forms/d/e/1FAIpQLSc5XIfmezx_-fDnwpKC9QW_cC3MtrHTyVTOpPiWAIOlIu6RtA/viewformd)
+ * The twitter account with [all the confessions is here.](https://twitter.com/fesshole)
+ * [This is the account](https://twitter.com/robmanuel) of the administrator / moderator of The Fesshole.
+ 
+ **Content**
+ 
+ 01. Introduction
+ 02. The Fesshole Spreadsheet 
+ 03. Exploratory Data Analysis
+ 04. Sentiment Analysis
+ 05. Modelling Sentiment
+ 
+ 

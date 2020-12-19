@@ -7,15 +7,13 @@ editor_options:
   chunk_output_type: console
 ---
 
-What license are you using for your code? See [choosealicense.com][choose] for
-help deciding. It's a convention to save a file `LICENSE` in the root of your
-Git repo that contains the license text.
+The code is protected by the [MIT LICENSE](LICENSE.md)
 
-What license are you using for the written content on your site? It is
-traditional to choose a [Creative Commons][cc] license for this type of content.
+This website is protected under the following license:
+[The Fesshole Data Analysis](https://ogorodriguez.github.io/03_the-fesshole/) by [Omar Gomez Rodriguez](https://github.com/ogorodriguez) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)
 
-[choose]: http://choosealicense.com/
-[cc]: https://creativecommons.org/choose/
+![](https://chooser-beta.creativecommons.org/img/cc.7a093a7d.svg)![](https://chooser-beta.creativecommons.org/img/by.f6aa22c4.svg)![](https://chooser-beta.creativecommons.org/img/nc.8c3b7ea6.svg)
+
 
 How should others cite your work? It's a convention to save a file `CITATION`
 in the root of your Git repo that contains the citation information.
