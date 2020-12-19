@@ -29,7 +29,7 @@ managed by
  
  01. [Introduction](01_introduction.html)
  02. [The Fesshole Spreadsheet](02_spreadsheet.html) 
- 03. Exploratory Data Analysis
+ 03. [Exploratory Data Analysis](03_EDA.html)
  04. Sentiment Analysis
  05. Sentiment Predictive Model
  
