@@ -11,7 +11,7 @@
 
 
 
-<title>About</title>
+<title>About this website</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,6 +24,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -301,7 +303,13 @@ $(document).ready(function () {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/ogorodriguez/03_the-fesshole">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -311,7 +319,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About</h1>
+<h1 class="title toc-ignore">About this website</h1>
 
 </div>
 
@@ -367,16 +375,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongf598f6c"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> f598f6c </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetreebbc67273dd754625a30afba0342ebc1be215c310targetblankbbc6727a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/bbc67273dd754625a30afba0342ebc1be215c310" target="_blank">bbc6727</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongf598f6c" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetreebbc67273dd754625a30afba0342ebc1be215c310targetblankbbc6727a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version f598f6c. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/bbc67273dd754625a30afba0342ebc1be215c310" target="_blank">bbc6727</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -384,6 +392,11 @@ Note that you need to be careful to ensure that all relevant files for the analy
 <pre><code>
 Ignored files:
     Ignored:    .Rproj.user/
+    Ignored:    data/data_raw/
+
+Untracked files:
+    Untracked:  data/images/
+    Untracked:  figure/
 
 </code></pre>
 <p>
@@ -427,7 +440,41 @@ Message
 Rmd
 </td>
 <td>
-f598f6c
+<a href="https://github.com/ogorodriguez/03_the-fesshole/blob/bbc67273dd754625a30afba0342ebc1be215c310/analysis/about.Rmd" target="_blank">bbc6727</a>
+</td>
+<td>
+ogorodriguez
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+Crated file for packages to source, and upated analysis files
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/ogorodriguez/03_the-fesshole/935cd15c4e9fa8c3d05e0befa6efe8ad88044e9a/docs/about.html" target="_blank">935cd15</a>
+</td>
+<td>
+ogorodriguez
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ogorodriguez/03_the-fesshole/blob/f598f6c0831dd030ee3d08f11096a3346e67d565/analysis/about.Rmd" target="_blank">f598f6c</a>
 </td>
 <td>
 ogorodriguez
@@ -447,6 +494,9 @@ Start workflowr project.
 </div>
 </div>
 <p>Describe your project.</p>
+<p>This project aims to analyse the <a href="https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978">spreadsheet</a> of The Fesshole confessions form and twitter account. do some text analysis and modeling.</p>
+<p>An early stage of this project will include EDA and graphics to understand the data.</p>
+<p>Other stages will include analysis of the text to determine sentiment, and perhaps the creation of models to predict sentiment based on words used in a confession.</p>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
