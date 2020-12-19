@@ -11,7 +11,7 @@
 
 
 
-<title>Introduction</title>
+<title>The Fesshole Spreadsheet</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -395,7 +395,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Introduction</h1>
+<h1 class="title toc-ignore">The Fesshole Spreadsheet</h1>
 
 </div>
 
@@ -550,7 +550,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/01_introduction.Rmd</code>) and HTML (<code>docs/01_introduction.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/02_spreadsheet.Rmd</code>) and HTML (<code>docs/02_spreadsheet.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -579,7 +579,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/ogorodriguez/03_the-fesshole/blob/ac89fcdf2d8fe6182d293c4648486862e191efec/analysis/01_introduction.Rmd" target="_blank">ac89fcd</a>
+<a href="https://github.com/ogorodriguez/03_the-fesshole/blob/ac89fcdf2d8fe6182d293c4648486862e191efec/analysis/02_spreadsheet.Rmd" target="_blank">ac89fcd</a>
 </td>
 <td>
 ogorodriguez
@@ -591,74 +591,6 @@ ogorodriguez
 Content 02 created, and several adjustments to source code as well as the data
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/ogorodriguez/03_the-fesshole/af115c3365ffbcb62fb217550004973c63bf876a/docs/01_introduction.html" target="_blank">af115c3</a>
-</td>
-<td>
-ogorodriguez
-</td>
-<td>
-2020-12-19
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/ogorodriguez/03_the-fesshole/blob/10f9705f08dcbd611700a932fcc3a4fe05d26981/analysis/01_introduction.Rmd" target="_blank">10f9705</a>
-</td>
-<td>
-ogorodriguez
-</td>
-<td>
-2020-12-19
-</td>
-<td>
-Removed warning from image path
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/ogorodriguez/03_the-fesshole/2ef6dcdabc2147b632ee6ea22383c51609189b66/docs/01_introduction.html" target="_blank">2ef6dcd</a>
-</td>
-<td>
-ogorodriguez
-</td>
-<td>
-2020-12-19
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/ogorodriguez/03_the-fesshole/blob/d619cf5c2adab204081a26ef542ab9d615350a3b/analysis/01_introduction.Rmd" target="_blank">d619cf5</a>
-</td>
-<td>
-ogorodriguez
-</td>
-<td>
-2020-12-19
-</td>
-<td>
-Linked Introduction section
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -666,22 +598,79 @@ Linked Introduction section
 </div>
 </div>
 </div>
-<div id="introducing-the-the-fesshole" class="section level2">
-<h2>Introducing the The Fesshole</h2>
-<p>The Fesshole is a twitter account where anonymous messages are posted, assuming they are sent by various people and that those confessions and thus true or have some sort of truth associated with them.</p>
-<p>Any person can leave a confession anonymously by filling out a google form. Confessions are then subject to moderation by an accoun administrator.</p>
-<p>For those interested in datasets and analysis, the admnistrator has made the spreadsheet collecting all the confessions publicly available. This has been the motivation for me to start this project and see what type of questions we can make to tha data and if there are possibilites of modelling for prediction.</p>
-<p>Since anyone with access to the Form can send a confession, this is a mine for text analysis and perhaps pattern detection. Sentiment can be associated to each confession so we can estimate whether the users are being happy or sad, angry or joyful. Regarding the modelling for prediction, I have thougth it would be good to try to see whether we can predict the sentiment of a confession based on the words used in them.</p>
-<p>I have to admit some of these ideas may require skills I still need to master regarding data analysis and the tools that go with it. This will be a good learning experience all the way.</p>
+<div id="the-fesshole-spreadsheet" class="section level2">
+<h2>The Fesshole Spreadsheet</h2>
+<p><a href="https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978">The Fesshole Spreadsheet</a> is a live document collecting all confession sent by any person who has access to the form. That way, confessions can arrive at any given moment any day any time.<br />
+Confessions are all in English since its origin is a twitter account managed presumably from the UK, I believe.</p>
+<p>It consists of mainly two columns. A third column host basic information about the spreadsheet on the first three rows. The first and second columns are the ones with the timestamp and the text of the confession respectively.</p>
+<div class="figure">
+<img src="images/01_fesshole-spread.png" alt="" />
+<p class="caption">img_01 - First 11 rows of the Fesshole spreadsheet</p>
 </div>
-<div id="useful-links" class="section level2">
-<h2>Useful links</h2>
-<ul>
-<li>The spreadsheet with all entries <a href="https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978">can be found here.</a></li>
-<li>The public form <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5XIfmezx_-fDnwpKC9QW_cC3MtrHTyVTOpPiWAIOlIu6RtA/viewformd">can be found here.</a></li>
-<li>The twitter account with <a href="https://twitter.com/fesshole">all the confessions is here.</a></li>
-<li><a href="https://twitter.com/robmanuel">This is the account</a> of the administrator / moderator of The Fesshole.</li>
-</ul>
+</div>
+<div id="importing-the-fesshole-spreadsheet" class="section level2">
+<h2>Importing the Fesshole Spreadsheet</h2>
+<p>To import it to become part of the analysis we will need to do some rearranging during import.</p>
+<p>First we will import the raw spreadsheet as is using the <code>googlesheets4::read_sheet()</code> function.<br />
+Authentication to google drive may be required.</p>
+<p>The next steps will be commented out to keep the operations as minimum. An RDS version of the file will be downloaded and used for analysis. We can check creation time and modification time if needed to see if an update is required.</p>
+<p>I suggest updating the file if a minimum of 15 days have elapsed since tis creation.</p>
+<pre class="r"><code># Run this if an updated version of the spreadsheet is needed for analysis
+# Save file as RDS in project folder
+# Un-comment to update and comment back again
+# fesshole_raw &lt;- googlesheets4::read_sheet(&quot;https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978&quot;, col_types = &quot;c&quot;  )</code></pre>
+<pre class="r"><code># Saving raw spreadsheet as rds
+# Un-comment when updating spreadsheet 
+# Comment back again when saving new updated raw RDS file
+# write_rds(fesshole_raw, here::here(&quot;data&quot;, &quot;data_raw&quot;, &quot;fesshole_raw.rds&quot;))</code></pre>
+<p>Let’s check the creation time of the fesshole_raw rds file.</p>
+<pre class="r"><code>rds_created &lt;- file.info(here::here(&quot;data&quot;, &quot;data_raw&quot;, &quot;fesshole_raw.rds&quot;))$ctime
+rds_created</code></pre>
+<pre><code>[1] &quot;2020-12-19 22:14:26 CET&quot;</code></pre>
+<p>How many days have elapsed since file creation?</p>
+<pre class="r"><code>round(Sys.time() - rds_created, 0)</code></pre>
+<pre><code>Time difference of 37 mins</code></pre>
+<p>If the difference is 15 days or more, please update and save as RDS the fesshole_raw file.</p>
+</div>
+<div id="revising-the-raw-file" class="section level2">
+<h2>Revising the raw file</h2>
+<p>For the revision we will read the RDS file of the fesshole spreadsheet.</p>
+<pre class="r"><code>fesshole_rds &lt;- read_rds(here::here(&quot;data&quot;, &quot;data_raw&quot;, &quot;fesshole_raw.rds&quot;))</code></pre>
+<p>Let’s preview it</p>
+<pre class="r"><code>fesshole_rds %&gt;% 
+  head()</code></pre>
+<pre><code># A tibble: 6 x 3
+  Timestamp    `What&#39;s your confession?`            ...3                        
+  &lt;chr&gt;        &lt;chr&gt;                                &lt;chr&gt;                       
+1 7/4/2019 14… Sometimes I can&#39;t be bothered to us… &quot;Cut and paste this link if…
+2 7/4/2019 14… fp                                   &quot;http://bit.ly/fessholeform&quot;
+3 7/4/2019 14… I&#39;m not gay but wanking to a bit of… &quot;This is the bot link: http…
+4 7/4/2019 15… The painting of a penguin that&#39;s pr… &quot;Privacy statement. How ano…
+5 7/4/2019 15… I ate my son&#39;s easter egg. I am a f…  &lt;NA&gt;                       
+6 7/4/2019 15… I love Gingers                        &lt;NA&gt;                       </code></pre>
+<p>As indicated previously, the third column shows only general information regarding the confessions and can be safely removed.</p>
+<p>During the import the column type selected was character thus affecting the timestamp column.<br />
+Timestamp will be reverted back to data using the lubridate function.</p>
+<p>We will rename the remaining columns to simplified the variables names and make them consistent.</p>
+<pre class="r"><code>fesshole_new &lt;- fesshole_rds %&gt;% 
+  select(Timestamp, `What&#39;s your confession?`) %&gt;% 
+  rename(confessions = `What&#39;s your confession?`,
+         timestamp = Timestamp) %&gt;% 
+  mutate(timestamp = lubridate::mdy_hms(timestamp))</code></pre>
+<p>We will visualize a random selection of 5 rows from the data.</p>
+<pre class="r"><code>fesshole_new %&gt;%
+  dplyr::sample_n(5)</code></pre>
+<pre><code># A tibble: 5 x 2
+  timestamp           confessions                                               
+  &lt;dttm&gt;              &lt;chr&gt;                                                     
+1 2020-07-14 16:45:37 Overheard a colleague chatting shit about how long it’s t…
+2 2020-04-23 11:17:24 When I see a fit jogger I always give way to him, not bec…
+3 2020-01-02 08:47:03 I’m madly in love with one of my friends and we both know…
+4 2020-09-09 08:36:15 A South Wales Valleys lass dumped me for no real reason. …
+5 2020-12-15 13:40:12 I&#39;ve just noticed that the muscles on my right forearm an…</code></pre>
+<p>This did not require much data wrangling it seems. We will save it as an rds version.<br />
+This will be commented out and only needs to be reactivated when updating fesshole_raw.</p>
+<pre class="r"><code># write_rds(fesshole_new, here::here(&quot;data&quot;, &quot;fesshole_new.rds&quot;))</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -735,9 +724,10 @@ loaded via a namespace (and not attached):
 [65] magrittr_2.0.1     R6_2.5.0           generics_0.1.0     DBI_1.1.0         
 [69] pillar_1.4.7       haven_2.3.1        whisker_0.4        withr_2.3.0       
 [73] survival_3.2-7     nnet_7.3-14        janeaustenr_0.1.5  modelr_0.1.8      
-[77] crayon_1.3.4       rmarkdown_2.5      grid_4.0.3         readxl_1.3.1.9000 
-[81] data.table_1.13.4  git2r_0.27.1       reprex_0.3.0       digest_0.6.27     
-[85] httpuv_1.5.4       munsell_0.5.0      GPfit_1.0-8        viridisLite_0.3.0 </code></pre>
+[77] crayon_1.3.4       utf8_1.1.4         rmarkdown_2.5      grid_4.0.3        
+[81] readxl_1.3.1.9000  data.table_1.13.4  git2r_0.27.1       reprex_0.3.0      
+[85] digest_0.6.27      httpuv_1.5.4       munsell_0.5.0      GPfit_1.0-8       
+[89] viridisLite_0.3.0 </code></pre>
 </div>
 </div>
 
