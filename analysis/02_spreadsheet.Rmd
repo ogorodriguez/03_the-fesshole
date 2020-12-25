@@ -62,7 +62,7 @@ How many days have elapsed since file creation?
 round(Sys.time() - rds_created, 0)
 ```
 
-If the difference is 15 days or more, please update and save as RDS the fesshole_raw file.  
+If the difference is 15 days or more, please update and save as RDS the fesshole_raw filw following the indications above.
 
 ## Revising the raw file
 
@@ -109,6 +109,7 @@ This will be commented out and only needs to be reactivated when updating fessho
 ```{r}
 # write_rds(fesshole_new, here::here("data", "fesshole_new.rds"))
 ```
+
 
 
 

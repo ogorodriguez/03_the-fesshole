@@ -10,6 +10,7 @@ source(here::here("code/02_knitr-global.R"))
 
 ## Initial observations
 
+
 The current status of the working file with the fesshole data is
 
 ```{r}
@@ -27,7 +28,9 @@ The number of rows my differ upon updates done to the file.
 One of the first observations we can make is the number of words in each confession.  That way we
 can identify the longest confession, and when it was submitted.
 
-### Which is the longest confession?
+### The longest confession?
+
+Which one is the longest confession to date.
 
 We can add a word count column that can estimate the number of words per confession using the
 `stringr::str_count()` function.
@@ -38,32 +41,50 @@ after the aposotrophy ([see here for reference.](https://stackoverflow.com/quest
 ```{r}
 # Add a column with word counts
 fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  mutate(wordcount_est = stringr::str_count(confessions, '[\\w\']+')) %>% 
   sample_n(5)
   
 ```
 
 
-Now let's the maximumn number of words that appear in our wordcount column
+Now let's find out the entry with the maximumn number of words
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount_est = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  slice(which.max(wordcount_est)) %>% 
+  pull()
+```
+
+And when this entry was submitted...
+
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount_est = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  slice(which.max(wordcount_est)) %>% 
+  select(timestamp) %>% 
+  pull()
+
+```
+
+It was submitted on `r fesshole_new %>% mutate(wordcount_est = stringr::str_count(confessions, '[\\w\']+')) %>% slice(which.max(wordcount_est)) %>% select(timestamp) %>% pull()`
+
+Here's the text of the longest confession: a very juicy account of identity theft, gay politicians, lots of alcohol and the Brexit.
 
 ```{r}
 fesshole_new %>% 
   mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
   slice(which.max(wordcount)) %>% 
+  select(confessions) %>% 
   pull()
-```
-
-And when this was written...
-
-
-```{r}
-fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
-  slice(which.max(wordcount)) 
 
 ```
 
-It was submitted on September 19, 2019.
+Oh wow. This is a very juicy account of identity theft, gay politicians, lots of alcohol and the Brexit.
+
+The paragraph contains line breaks `\n` that somehow made it into the calculation of the number of words.
+That is why the number of words is marked as estimate.
 
 These are the top 10 longuest confessions.
 
