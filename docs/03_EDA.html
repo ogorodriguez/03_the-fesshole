@@ -420,7 +420,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-19
+<strong>Last updated:</strong> 2020-12-25
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -511,16 +511,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree9168d90cce6d16775058a0facabfd35fcbb370eftargetblank9168d90a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/9168d90cce6d16775058a0facabfd35fcbb370ef" target="_blank">9168d90</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree1a512a576feed00cb31d3e942454dd3d2ff9bc47targetblank1a512a5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/1a512a576feed00cb31d3e942454dd3d2ff9bc47" target="_blank">1a512a5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree9168d90cce6d16775058a0facabfd35fcbb370eftargetblank9168d90a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree1a512a576feed00cb31d3e942454dd3d2ff9bc47targetblank1a512a5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/9168d90cce6d16775058a0facabfd35fcbb370ef" target="_blank">9168d90</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/1a512a576feed00cb31d3e942454dd3d2ff9bc47" target="_blank">1a512a5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -528,6 +528,7 @@ Note that you need to be careful to ensure that all relevant files for the analy
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    data/.DS_Store
 
@@ -535,9 +536,9 @@ Untracked files:
     Untracked:  figure/
 
 Unstaged changes:
-    Modified:   analysis/02_spreadsheet.Rmd
-    Modified:   analysis/index.Rmd
     Deleted:    code/packages.Rmd
+    Modified:   data/data_raw/fesshole_raw.rds
+    Modified:   data/fesshole_new.rds
 
 </code></pre>
 <p>
@@ -576,6 +577,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ogorodriguez/03_the-fesshole/blob/1a512a576feed00cb31d3e942454dd3d2ff9bc47/analysis/03_EDA.Rmd" target="_blank">1a512a5</a>
+</td>
+<td>
+ogorodriguez
+</td>
+<td>
+2020-12-25
+</td>
+<td>
+Updated the Fesshole spreadsheet, added a bit more description to EDA session, and
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/ogorodriguez/03_the-fesshole/067e4ca2a1ee28b30d27b96a2411418778ba464f/docs/03_EDA.html" target="_blank">067e4ca</a>
+</td>
+<td>
+ogorodriguez
+</td>
+<td>
+2020-12-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -641,43 +676,52 @@ Content 02 created, and several adjustments to source code as well as the data
 fesshole_new &lt;- read_rds(here::here(&quot;data&quot;, &quot;fesshole_new.rds&quot;))</code></pre>
 <pre class="r"><code>fesshole_new %&gt;% 
   glimpse()</code></pre>
-<pre><code>Rows: 40,512
+<pre><code>Rows: 41,085
 Columns: 2
 $ timestamp   &lt;dttm&gt; 2019-07-04 14:58:08, 2019-07-04 14:58:09, 2019-07-04 14:…
 $ confessions &lt;chr&gt; &quot;Sometimes I can&#39;t be bothered to use loo roll and I just…</code></pre>
 <p>The number of rows my differ upon updates done to the file.</p>
 <p>One of the first observations we can make is the number of words in each confession. That way we can identify the longest confession, and when it was submitted.</p>
-<div id="which-is-the-longest-confession" class="section level3">
-<h3>Which is the longest confession?</h3>
+<div id="the-longest-confession" class="section level3">
+<h3>The longest confession?</h3>
+<p>Which one is the longest confession to date.</p>
 <p>We can add a word count column that can estimate the number of words per confession using the <code>stringr::str_count()</code> function.</p>
 <p>We use <code>[\\w\']+</code> to identify words with apostrophes taking into account the number of letters after the aposotrophy (<a href="https://stackoverflow.com/questions/8920145/count-the-number-of-all-words-in-a-string">see here for reference.</a> )</p>
 <pre class="r"><code># Add a column with word counts
 fesshole_new %&gt;% 
-  mutate(wordcount = stringr::str_count(confessions, &#39;[\\w\&#39;]+&#39;)) %&gt;% 
+  mutate(wordcount_est = stringr::str_count(confessions, &#39;[\\w\&#39;]+&#39;)) %&gt;% 
   sample_n(5)</code></pre>
 <pre><code># A tibble: 5 x 3
-  timestamp           confessions                                      wordcount
+  timestamp           confessions                                  wordcount_est
   &lt;dttm&gt;              &lt;chr&gt;                                                &lt;int&gt;
-1 2020-07-14 16:45:37 Overheard a colleague chatting shit about how l…        31
-2 2020-04-23 11:17:24 When I see a fit jogger I always give way to hi…        29
-3 2020-01-02 08:47:03 I’m madly in love with one of my friends and we…        35
-4 2020-09-09 08:36:15 A South Wales Valleys lass dumped me for no rea…        51
-5 2020-12-15 13:40:12 I&#39;ve just noticed that the muscles on my right …        50</code></pre>
-<p>Now let’s the maximumn number of words that appear in our wordcount column</p>
+1 2020-07-14 16:45:37 Overheard a colleague chatting shit about h…            31
+2 2020-04-23 11:17:24 When I see a fit jogger I always give way t…            29
+3 2020-01-02 08:47:03 I’m madly in love with one of my friends an…            35
+4 2020-09-09 08:36:15 A South Wales Valleys lass dumped me for no…            51
+5 2020-12-15 13:40:12 I&#39;ve just noticed that the muscles on my ri…            50</code></pre>
+<p>Now let’s find out the entry with the maximumn number of words</p>
+<pre class="r"><code>fesshole_new %&gt;% 
+  mutate(wordcount_est = stringr::str_count(confessions, &#39;[\\w\&#39;]+&#39;)) %&gt;% 
+  slice(which.max(wordcount_est)) %&gt;% 
+  pull()</code></pre>
+<pre><code>[1] 230</code></pre>
+<p>And when this entry was submitted…</p>
+<pre class="r"><code>fesshole_new %&gt;% 
+  mutate(wordcount_est = stringr::str_count(confessions, &#39;[\\w\&#39;]+&#39;)) %&gt;% 
+  slice(which.max(wordcount_est)) %&gt;% 
+  select(timestamp) %&gt;% 
+  pull()</code></pre>
+<pre><code>[1] &quot;2019-09-19 11:58:04 UTC&quot;</code></pre>
+<p>It was submitted on 2019-09-19 11:58:04</p>
+<p>Here’s the text of the longest confession: a very juicy account of identity theft, gay politicians, lots of alcohol and the Brexit.</p>
 <pre class="r"><code>fesshole_new %&gt;% 
   mutate(wordcount = stringr::str_count(confessions, &#39;[\\w\&#39;]+&#39;)) %&gt;% 
   slice(which.max(wordcount)) %&gt;% 
+  select(confessions) %&gt;% 
   pull()</code></pre>
-<pre><code>[1] 230</code></pre>
-<p>And when this was written…</p>
-<pre class="r"><code>fesshole_new %&gt;% 
-  mutate(wordcount = stringr::str_count(confessions, &#39;[\\w\&#39;]+&#39;)) %&gt;% 
-  slice(which.max(wordcount)) </code></pre>
-<pre><code># A tibble: 1 x 3
-  timestamp           confessions                                      wordcount
-  &lt;dttm&gt;              &lt;chr&gt;                                                &lt;int&gt;
-1 2019-09-19 11:58:04 &quot;I worked for a major UK political party 3 year…       230</code></pre>
-<p>It was submitted on September 19, 2019.</p>
+<pre><code>[1] &quot;I worked for a major UK political party 3 years ago. On the night of the results of the EU referendum vote, there were parties going on for the various campaigns. One of the MPs left their ID badge for the Commons on their desk for some reason.\n\nThis particular MP had a passing resemblance to myself. They were quite a new MP and not front line. On a whim, I decided to borrow this ID badge and take it out with me, and see if I could convince anyone I was said MP.\n\nI went to a party (making sure it wasn&#39;t one this particular MP was attending), and I was passing as this MP with everyone I was speaking to. Nobody seemed to question why I was wearing the badge. I kept drinking, and I forgot the rest of the night.\n\nI woke up, hung over, in a hotel room the next morning. I was worried I&#39;d lost the badge, but it was still round my neck. However, I found a note next to my bed written on the hotel&#39;s letterheaded paper.\n\n\&quot;Last night was great, you were lush in bed. Had no idea you were gay though.\&quot;\n\nIt turns out that I&#39;d fucked a prominent gay man involved in politics, and now they think this particular MP is in the closet and has had sex with them.&quot;</code></pre>
+<p>Oh wow. This is a very juicy account of identity theft, gay politicians, lots of alcohol and the Brexit.</p>
+<p>The paragraph contains line breaks <code>\n</code> that somehow made it into the calculation of the number of words. That is why the number of words is marked as estimate.</p>
 <p>These are the top 10 longuest confessions.</p>
 <pre class="r"><code>fesshole_new %&gt;% 
   mutate(wordcount = stringr::str_count(confessions, &#39;[\\w\&#39;]+&#39;)) %&gt;% 
