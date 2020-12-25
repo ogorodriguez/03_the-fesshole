@@ -6,3 +6,5 @@ opts_chunk$set(fig.width=12,
                echo=TRUE,
                warning=FALSE,
                message=FALSE)
+
+knitr::include_graphics("assets/*.png", error = FALSE)
