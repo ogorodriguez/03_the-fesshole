@@ -402,7 +402,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -411,7 +411,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -423,7 +423,7 @@ div.tocify {
 <strong>Last updated:</strong> 2020-12-25
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>03_the-fesshole/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -439,12 +439,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -511,16 +511,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree1a512a576feed00cb31d3e942454dd3d2ff9bc47targetblank1a512a5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/1a512a576feed00cb31d3e942454dd3d2ff9bc47" target="_blank">1a512a5</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree09e511e961c6fdf9e80441e64564d6dc00457adbtargetblank09e511ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/09e511e961c6fdf9e80441e64564d6dc00457adb" target="_blank">09e511e</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree1a512a576feed00cb31d3e942454dd3d2ff9bc47targetblank1a512a5a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree09e511e961c6fdf9e80441e64564d6dc00457adbtargetblank09e511ea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/1a512a576feed00cb31d3e942454dd3d2ff9bc47" target="_blank">1a512a5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/09e511e961c6fdf9e80441e64564d6dc00457adb" target="_blank">09e511e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -536,9 +536,7 @@ Untracked files:
     Untracked:  figure/
 
 Unstaged changes:
-    Deleted:    code/packages.Rmd
-    Modified:   data/data_raw/fesshole_raw.rds
-    Modified:   data/fesshole_new.rds
+    Modified:   analysis/02_spreadsheet.Rmd
 
 </code></pre>
 <p>
@@ -577,6 +575,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/ogorodriguez/03_the-fesshole/6bd38967468f61ebefd7dcd8e71a94a93be01903/docs/02_spreadsheet.html" target="_blank">6bd3896</a>
+</td>
+<td>
+ogorodriguez
+</td>
+<td>
+2020-12-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -674,7 +689,7 @@ Content 02 created, and several adjustments to source code as well as the data
 <p><a href="https://docs.google.com/spreadsheets/d/1wiUl3SiU6qlRU50WN1sKZ0ERXXj_7WVvF5QFxTMTAaY/edit#gid=1599891978">The Fesshole Spreadsheet</a> is a live document collecting all confession sent by any person who has access to the form. That way, confessions can arrive at any given moment any day any time.<br />
 Confessions are all in English since its origin is a twitter account managed presumably from the UK, I believe.</p>
 <p>It consists of mainly two columns. A third column host basic information about the spreadsheet on the first three rows. The first and second columns are the ones with the timestamp and the text of the confession respectively.</p>
-<p><img src="images/01_fesshole-spread.png"></p>
+<p><img src="assets/01_fesshole-spread.png" /></p>
 </div>
 <div id="importing-the-fesshole-spreadsheet" class="section level2">
 <h2>Importing the Fesshole Spreadsheet</h2>
@@ -697,7 +712,7 @@ rds_created</code></pre>
 <pre><code>[1] &quot;2020-12-25 12:51:50 CET&quot;</code></pre>
 <p>How many days have elapsed since file creation?</p>
 <pre class="r"><code>round(Sys.time() - rds_created, 0)</code></pre>
-<pre><code>Time difference of 23 mins</code></pre>
+<pre><code>Time difference of 8 hours</code></pre>
 <p>If the difference is 15 days or more, please update and save as RDS the fesshole_raw filw following the indications above.</p>
 </div>
 <div id="revising-the-raw-file" class="section level2">
@@ -749,7 +764,7 @@ This will be commented out and only needs to be reactivated when updating fessho
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>R version 4.0.3 (2020-10-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Catalina 10.15.7
+Running under: macOS Big Sur 10.16
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib

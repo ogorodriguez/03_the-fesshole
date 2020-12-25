@@ -18,7 +18,7 @@ It consists of mainly two columns.  A third column host basic information about 
 on the first three rows.  The first and second columns are the ones with the timestamp and
 the text of the confession respectively.
 
-<img src="images/01_fesshole-spread.png">
+![](assets/01_fesshole-spread.png)
 
 ## Importing the Fesshole Spreadsheet
 
