@@ -420,7 +420,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-25
+<strong>Last updated:</strong> 2020-12-26
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -511,16 +511,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetreea3a2d5065ab06aa5eba9bd9d374f0f385bc21cbftargetblanka3a2d50a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/a3a2d5065ab06aa5eba9bd9d374f0f385bc21cbf" target="_blank">a3a2d50</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetreef9000e436b7a961b196357b481fc001f7d3c1403targetblankf9000e4a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/f9000e436b7a961b196357b481fc001f7d3c1403" target="_blank">f9000e4</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetreea3a2d5065ab06aa5eba9bd9d374f0f385bc21cbftargetblanka3a2d50a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetreef9000e436b7a961b196357b481fc001f7d3c1403targetblankf9000e4a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/a3a2d5065ab06aa5eba9bd9d374f0f385bc21cbf" target="_blank">a3a2d50</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/f9000e436b7a961b196357b481fc001f7d3c1403" target="_blank">f9000e4</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -533,6 +533,12 @@ Ignored files:
     Ignored:    data/.DS_Store
 
 Untracked files:
+    Untracked:  code/03_load_df.R
+    Untracked:  data/fesshole_detailed.rds
+    Untracked:  data/fesshole_index.rds
+    Untracked:  data/fesshole_pairs.rds
+    Untracked:  data/fesshole_pairs_xl.rds
+    Untracked:  data/fesshole_words.rds
     Untracked:  figure/
 
 </code></pre>
@@ -572,6 +578,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ogorodriguez/03_the-fesshole/blob/f9000e436b7a961b196357b481fc001f7d3c1403/analysis/02_spreadsheet.Rmd" target="_blank">f9000e4</a>
+</td>
+<td>
+ogorodriguez
+</td>
+<td>
+2020-12-26
+</td>
+<td>
+Added new datasets for words, bigrams, and split dates
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/ogorodriguez/03_the-fesshole/d29f83318253d815a18e75cc8e32d0fb1f0b5caa/docs/02_spreadsheet.html" target="_blank">d29f833</a>
+</td>
+<td>
+ogorodriguez
+</td>
+<td>
+2020-12-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -780,7 +820,7 @@ rds_created</code></pre>
 <pre><code>[1] &quot;2020-12-25 12:51:50 CET&quot;</code></pre>
 <p>How many days have elapsed since file creation?</p>
 <pre class="r"><code>round(Sys.time() - rds_created, 0)</code></pre>
-<pre><code>Time difference of 8 hours</code></pre>
+<pre><code>Time difference of 13 hours</code></pre>
 <p>If the difference is 15 days or more, please update and save as RDS the fesshole_raw filw following the indications above.</p>
 </div>
 <div id="revising-the-raw-file" class="section level2">
@@ -822,6 +862,157 @@ Timestamp will be reverted back to data using the lubridate function.</p>
 <p>This did not require much data wrangling it seems. We will save it as an rds version.<br />
 This will be commented out and only needs to be reactivated when updating fesshole_raw.</p>
 <pre class="r"><code># write_rds(fesshole_new, here::here(&quot;data&quot;, &quot;fesshole_new.rds&quot;))</code></pre>
+</div>
+<div id="indexing-the-dataset" class="section level2">
+<h2>Indexing the dataset</h2>
+<p>We will index every confession. This will help us track the words and associate them to the confession they belong.</p>
+<p>This will create a new data frame that we will save for future reference in our analysis.</p>
+<pre class="r"><code># Add index column called confess_id
+fesshole_index &lt;- fesshole_new %&gt;% 
+  mutate(confess_id = row_number()) %&gt;% 
+  relocate(confess_id)
+
+# Check the index number of the first 6 (head) and last 6 (tail) entries
+fesshole_index %&gt;% 
+  head()</code></pre>
+<pre><code># A tibble: 6 x 3
+  confess_id timestamp           confessions                                    
+       &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt;                                          
+1          1 2019-07-04 14:58:08 Sometimes I can&#39;t be bothered to use loo roll …
+2          2 2019-07-04 14:58:09 fp                                             
+3          3 2019-07-04 14:58:52 I&#39;m not gay but wanking to a bit of gay porn k…
+4          4 2019-07-04 15:00:02 The painting of a penguin that&#39;s proudly hung …
+5          5 2019-07-04 15:01:33 I ate my son&#39;s easter egg. I am a fat wanker.  
+6          6 2019-07-04 15:02:11 I love Gingers                                 </code></pre>
+<pre class="r"><code>fesshole_index %&gt;% 
+  tail()</code></pre>
+<pre><code># A tibble: 6 x 3
+  confess_id timestamp           confessions                                    
+       &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt;                                          
+1      41080 2020-12-25 06:51:55 Christmas compromise: I agree to watch Love Ac…
+2      41081 2020-12-25 08:20:40 I wait for one of my school friends to send a …
+3      41082 2020-12-25 08:37:46 I’m a tiler and plasterer. I use my grout floa…
+4      41083 2020-12-25 09:27:30 I’m middle class. I’ve hit my 40s and I’ve fin…
+5      41084 2020-12-25 10:08:59 I often deliver parcels to Kilroy. Former tv p…
+6      41085 2020-12-25 11:16:43 I hugely resent christmas as a lone parent. I …</code></pre>
+<pre class="r"><code># Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_index, here::here(&quot;data&quot;, &quot;fesshole_index.rds&quot;))</code></pre>
+</div>
+<div id="getting-more-details-year-month-day-and-time" class="section level2">
+<h2>Getting more details: Year, Month, Day and Time</h2>
+<p>Another data set to have is one where the date is separated into colunms so we can see month, day, day of week, year, and event the time separartely. This may help answer questions such as which time is most common for people to submit confessions. As well as which month are most or least popular for example.</p>
+<p>40,000+ confession have been submitted since July 2019 until Dec 2020, which is relatively a small time compared to the number of entries already in the dataset. This may not actually be so representative perhaps, but it could help derive some predictions into the future who knows.</p>
+<pre class="r"><code>fesshole_detailed &lt;- fesshole_index %&gt;% 
+  mutate(year = lubridate::year(timestamp),
+         month = lubridate::month(timestamp, label = TRUE, abbr = FALSE),
+         day_label = lubridate::wday(timestamp, label = TRUE, abbr = FALSE),
+         day = lubridate::day(timestamp)
+         )
+
+fesshole_detailed %&gt;% 
+  sample_n(5)</code></pre>
+<pre><code># A tibble: 5 x 7
+  confess_id timestamp           confessions          year month day_label   day
+       &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt;               &lt;dbl&gt; &lt;ord&gt; &lt;ord&gt;     &lt;int&gt;
+1      26366 2020-07-29 16:57:02 &quot;I was sexually as…  2020 July  Wednesday    29
+2       4808 2019-11-18 20:27:56 &quot;I tell people I d…  2019 Nove… Monday       18
+3      40102 2020-12-15 15:53:08 &quot;I once spread a r…  2020 Dece… Tuesday      15
+4      10217 2020-01-19 17:13:27 &quot;My wife wants to …  2020 Janu… Sunday       19
+5      16451 2020-04-04 12:08:45 &quot;I’m 52, single an…  2020 April Saturday      4</code></pre>
+<pre class="r"><code># Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_detailed, here::here(&quot;data&quot;, &quot;fesshole_detailed.rds&quot;))</code></pre>
+</div>
+<div id="gettting-the-corpus-of-the-confessions" class="section level2">
+<h2>Gettting the corpus of the Confessions</h2>
+<p>Another data set to create is the one with each word from all the confessions. This will drive the text analysis and sentimental analysis of the spreadsheet.</p>
+<p>I will keep the stop words and use the tf-idf to find relevance of words according to their frequency or rank. <a href="https://datascience.stackexchange.com/questions/31048/pros-cons-of-stop-word-removal">It is somehow recommended</a> not to remove stop words when doing sentiment analysis since stop words can provide context that can be helpful. The drawback will be the dimension of the data set may impact the analysis.</p>
+<p>I will also use tokens to have a data set of pairs of words as well. I will look into the size of the dataset in case it may harm future computations.</p>
+<div id="confession-words" class="section level3">
+<h3>Confession words</h3>
+<p>The confession words data set we will call <code>fesshole_words</code> will have each word per row and will thus consider then as single units.</p>
+<pre class="r"><code>fesshole_words &lt;- fesshole_index %&gt;% 
+  tidytext::unnest_tokens(word, confessions)
+
+fesshole_words %&gt;% 
+  glimpse()</code></pre>
+<pre><code>Rows: 1,373,348
+Columns: 3
+$ confess_id &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3…
+$ timestamp  &lt;dttm&gt; 2019-07-04 14:58:08, 2019-07-04 14:58:08, 2019-07-04 14:5…
+$ word       &lt;chr&gt; &quot;sometimes&quot;, &quot;i&quot;, &quot;can&#39;t&quot;, &quot;be&quot;, &quot;bothered&quot;, &quot;to&quot;, &quot;use&quot;, …</code></pre>
+<pre class="r"><code>fesshole_words %&gt;% 
+  head(10)</code></pre>
+<pre><code># A tibble: 10 x 3
+   confess_id timestamp           word     
+        &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt;    
+ 1          1 2019-07-04 14:58:08 sometimes
+ 2          1 2019-07-04 14:58:08 i        
+ 3          1 2019-07-04 14:58:08 can&#39;t    
+ 4          1 2019-07-04 14:58:08 be       
+ 5          1 2019-07-04 14:58:08 bothered 
+ 6          1 2019-07-04 14:58:08 to       
+ 7          1 2019-07-04 14:58:08 use      
+ 8          1 2019-07-04 14:58:08 loo      
+ 9          1 2019-07-04 14:58:08 roll     
+10          1 2019-07-04 14:58:08 and      </code></pre>
+<pre class="r"><code># Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_words, here::here(&quot;data&quot;, &quot;fesshole_words.rds&quot;))</code></pre>
+</div>
+</div>
+<div id="confession-word-pairs" class="section level2">
+<h2>Confession word pairs</h2>
+<p>The word pairs confessions data set will use the bigrams tool in the pakcage <code>tidytext</code>.</p>
+<p>This will help us see the relationship between words and will make sentiment analysis more pertinent by identifying negation that comes from the use of words with negative connotation together with other words that may have a positive one.</p>
+<p>This will also increase the volume of our dataset considerably due to duplication of terms to form the pairs.</p>
+<pre class="r"><code>fesshole_pairs &lt;- fesshole_index %&gt;% 
+  tidytext::unnest_tokens(bigrams, confessions, token = &quot;ngrams&quot;, n = 2)
+  
+fesshole_pairs %&gt;% 
+  glimpse()</code></pre>
+<pre><code>Rows: 1,332,545
+Columns: 3
+$ confess_id &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3…
+$ timestamp  &lt;dttm&gt; 2019-07-04 14:58:08, 2019-07-04 14:58:08, 2019-07-04 14:5…
+$ bigrams    &lt;chr&gt; &quot;sometimes i&quot;, &quot;i can&#39;t&quot;, &quot;can&#39;t be&quot;, &quot;be bothered&quot;, &quot;both…</code></pre>
+<pre class="r"><code>fesshole_pairs %&gt;% 
+  head(10)</code></pre>
+<pre><code># A tibble: 10 x 3
+   confess_id timestamp           bigrams    
+        &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt;      
+ 1          1 2019-07-04 14:58:08 sometimes i
+ 2          1 2019-07-04 14:58:08 i can&#39;t    
+ 3          1 2019-07-04 14:58:08 can&#39;t be   
+ 4          1 2019-07-04 14:58:08 be bothered
+ 5          1 2019-07-04 14:58:08 bothered to
+ 6          1 2019-07-04 14:58:08 to use     
+ 7          1 2019-07-04 14:58:08 use loo    
+ 8          1 2019-07-04 14:58:08 loo roll   
+ 9          1 2019-07-04 14:58:08 roll and   
+10          1 2019-07-04 14:58:08 and i      </code></pre>
+<pre class="r"><code># Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_pairs, here::here(&quot;data&quot;, &quot;fesshole_pairs.rds&quot;))</code></pre>
+<p>I will enhance the word pairs data set to include the words separate as well</p>
+<pre class="r"><code>fesshole_pairs_xl &lt;- fesshole_pairs %&gt;% 
+  mutate(pairs = bigrams) %&gt;% 
+  separate(bigrams, c(&quot;word1&quot;, &quot;word2&quot;), sep = &quot; &quot;)
+
+fesshole_pairs_xl</code></pre>
+<pre><code># A tibble: 1,332,545 x 5
+   confess_id timestamp           word1     word2    pairs      
+        &lt;int&gt; &lt;dttm&gt;              &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;      
+ 1          1 2019-07-04 14:58:08 sometimes i        sometimes i
+ 2          1 2019-07-04 14:58:08 i         can&#39;t    i can&#39;t    
+ 3          1 2019-07-04 14:58:08 can&#39;t     be       can&#39;t be   
+ 4          1 2019-07-04 14:58:08 be        bothered be bothered
+ 5          1 2019-07-04 14:58:08 bothered  to       bothered to
+ 6          1 2019-07-04 14:58:08 to        use      to use     
+ 7          1 2019-07-04 14:58:08 use       loo      use loo    
+ 8          1 2019-07-04 14:58:08 loo       roll     loo roll   
+ 9          1 2019-07-04 14:58:08 roll      and      roll and   
+10          1 2019-07-04 14:58:08 and       i        and i      
+# … with 1,332,535 more rows</code></pre>
+<pre class="r"><code># Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_pairs_xl, here::here(&quot;data&quot;, &quot;fesshole_pairs_xl.rds&quot;))</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
