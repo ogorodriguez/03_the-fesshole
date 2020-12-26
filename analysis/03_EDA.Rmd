@@ -95,29 +95,6 @@ fesshole_new %>%
   head(10)
 ```
 
-## Indexing the dataset
-
-We will index every confession.  This will help us track the words and associate them to the confession
-they belong.
-
-This will create a new data frame that we will save for future reference in our analysis.
-
-```{r}
-# Add index column called confess_id
-fesshole_index <- fesshole_new %>% 
-  mutate(confess_id = row_number()) %>% 
-  relocate(confess_id)
-
-# Check the index number of the first 6 (head) and last 6 (tail) entries
-fesshole_index %>% 
-  head()
-
-fesshole_index %>% 
-  tail()
-
-# Comment out when an update is required.  Comment back in when done  
-# write_rds(fesshole_index, here::here("data", "fesshole_index.rds"))
-```
 
 
 Removing stopwords from the pairs of words
