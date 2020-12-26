@@ -111,6 +111,137 @@ This will be commented out and only needs to be reactivated when updating fessho
 ```
 
 
+## Indexing the dataset
+
+We will index every confession.  This will help us track the words and associate them to the confession
+they belong.
+
+This will create a new data frame that we will save for future reference in our analysis.
+
+```{r}
+# Add index column called confess_id
+fesshole_index <- fesshole_new %>% 
+  mutate(confess_id = row_number()) %>% 
+  relocate(confess_id)
+
+# Check the index number of the first 6 (head) and last 6 (tail) entries
+fesshole_index %>% 
+  head()
+
+fesshole_index %>% 
+  tail()
+
+# Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_index, here::here("data", "fesshole_index.rds"))
+```
+
+
+## Getting more details: Year, Month, Day and Time  
+
+Another data set to have is one where the date is separated into colunms so we can see month, day, day of week, year, and event the time separartely.  This may help answer questions such as which time is most common for 
+people to submit confessions.   As well as which month are most or least popular for example.
+
+40,000+ confession have been submitted since July 2019 until Dec 2020, which is relatively a small time compared to the number of entries already in the dataset.  This may not actually be so representative perhaps, but it could help derive some predictions into the future who knows.
+
+```{r}
+fesshole_detailed <- fesshole_index %>% 
+  mutate(year = lubridate::year(timestamp),
+         month = lubridate::month(timestamp, label = TRUE, abbr = FALSE),
+         day_label = lubridate::wday(timestamp, label = TRUE, abbr = FALSE),
+         day = lubridate::day(timestamp)
+         )
+
+fesshole_detailed %>% 
+  sample_n(5)
+
+# Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_detailed, here::here("data", "fesshole_detailed.rds"))
+
+```
+
+
+## Gettting the corpus of the Confessions
+
+Another data set to create is the one with each word from all the confessions.  This will drive
+the text analysis and sentimental analysis of the spreadsheet.
+
+I will keep the stop words and use the tf-idf to find relevance of words according to their frequency or rank.
+[It is somehow recommended](https://datascience.stackexchange.com/questions/31048/pros-cons-of-stop-word-removal) not to remove stop words when doing sentiment analysis since stop words can
+provide context that can be helpful.  The drawback will be the dimension of the data set may impact the analysis.
+
+I will also use tokens to have a data set of pairs of words as well.  I will look into the size of the 
+dataset in case it may harm future computations.
+
+### Confession words
+
+The confession words data set we will call `fesshole_words` will have each word per row and will
+thus consider then as single units.  
+
+```{r}
+fesshole_words <- fesshole_index %>% 
+  tidytext::unnest_tokens(word, confessions)
+
+fesshole_words %>% 
+  glimpse()
+
+fesshole_words %>% 
+  head(10)
+
+# Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_words, here::here("data", "fesshole_words.rds"))
+
+```
+
+
+## Confession word pairs
+
+The word pairs confessions data set will use the bigrams tool in the pakcage `tidytext`.  
+
+This will help us see the relationship between words and will make sentiment analysis more pertinent
+by identifying negation that comes from the use of words with negative connotation together with 
+other words that may have a positive one.
+
+This will also increase the volume of our dataset considerably due to duplication of terms to form the pairs.
+
+```{r}
+fesshole_pairs <- fesshole_index %>% 
+  tidytext::unnest_tokens(bigrams, confessions, token = "ngrams", n = 2)
+  
+fesshole_pairs %>% 
+  glimpse()
+
+fesshole_pairs %>% 
+  head(10)
+
+# Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_pairs, here::here("data", "fesshole_pairs.rds"))
+
+```
+
+I will enhance the word pairs data set to include the words separate as well
+
+```{r}
+fesshole_pairs_xl <- fesshole_pairs %>% 
+  mutate(pairs = bigrams) %>% 
+  separate(bigrams, c("word1", "word2"), sep = " ")
+
+fesshole_pairs_xl
+
+
+# Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_pairs_xl, here::here("data", "fesshole_pairs_xl.rds"))
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 

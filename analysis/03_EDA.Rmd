@@ -86,7 +86,7 @@ Oh wow. This is a very juicy account of identity theft, gay politicians, lots of
 The paragraph contains line breaks `\n` that somehow made it into the calculation of the number of words.
 That is why the number of words is marked as estimate.
 
-These are the top 10 longuest confessions.
+These are the top 10 longest confessions.
 
 ```{r}
 fesshole_new %>% 
@@ -95,9 +95,42 @@ fesshole_new %>%
   head(10)
 ```
 
+## Indexing the dataset
+
+We will index every confession.  This will help us track the words and associate them to the confession
+they belong.
+
+This will create a new data frame that we will save for future reference in our analysis.
+
+```{r}
+# Add index column called confess_id
+fesshole_index <- fesshole_new %>% 
+  mutate(confess_id = row_number()) %>% 
+  relocate(confess_id)
+
+# Check the index number of the first 6 (head) and last 6 (tail) entries
+fesshole_index %>% 
+  head()
+
+fesshole_index %>% 
+  tail()
+
+# Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_index, here::here("data", "fesshole_index.rds"))
+```
 
 
+Removing stopwords from the pairs of words
 
+```{r}
+fesshole_pairs_xl <- read_rds(here::here("data", "fesshole_pairs_xl.rds"))
+fesshole_pairs_xl %>% 
+  count(pairs, word1, word2, sort = TRUE) %>% 
+   filter(!word1 %in% tidytext::stop_words$word) %>%
+  filter(!word2 %in% tidytext::stop_words$word)
+  
+  
+```
 
 
 
