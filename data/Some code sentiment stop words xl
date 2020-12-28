@@ -1,0 +1,39 @@
+
+Some code to find out text analysis of each confession and one to remove stop words
+from the fesshole pairs xl dataset
+
+
+```{r}
+# Removing the stopwords from the fesshole pairs xl dataset
+fesshole_pairs_xl <- read_rds(here::here("data", "fesshole_pairs_xl.rds"))
+fesshole_pairs_xl %>%
+   filter(!word1 %in% tidytext::stop_words$word) %>%
+  filter(!word2 %in% tidytext::stop_words$word) %>%
+count(pairs,sort = TRUE)
+
+
+```
+
+
+```{r}
+# Variable to id the confession, manual input
+id <- 20126
+```
+
+
+```{r}
+# Count the sentiments within one confession
+fesshole_words %>%
+        dplyr::filter(confess_id == id) %>%
+        right_join(tidytext::get_sentiments("nrc")) %>%
+        filter(!is.na(confess_id)) %>%
+        count(sentiment, sort = TRUE)
+```
+
+```{r}
+# Identify the confession from the sentiment
+fesshole_index %>%
+  filter(confess_id == id) %>%
+  select(confessions) %>%
+  pull()
+```
