@@ -6,17 +6,12 @@ output: html_document
 ```{r global_options, include=FALSE}
 source(here::here("code", "01_packages.R"))
 source(here::here("code/02_knitr-global.R"))
+source(here::here("code/03_load_df.R"))
 ```
 
 ## Initial observations
 
-
-The current status of the working file with the fesshole data is
-
-```{r}
-# Read in rds file if required
-fesshole_new <- read_rds(here::here("data", "fesshole_new.rds"))
-```
+The current status of the working file with the fesshole data is found on the set `fesshole_new`
 
 ```{r}
 fesshole_new %>% 
@@ -95,21 +90,64 @@ fesshole_new %>%
   head(10)
 ```
 
+## How many confessions?
 
+There is a lot of counting going on when we do EDA.
 
-Removing stopwords from the pairs of words
+For instance, we can ask how many confessions were submitted in a given day, through the months, and also in 
+years 2019 and 2020 so far.
+
+We could start by counting the number of confessions submitted every month ever since the beginning of the 
+account in July 2019.
+
+### ... per month
+
+Let's get the table count for each month
 
 ```{r}
-fesshole_pairs_xl <- read_rds(here::here("data", "fesshole_pairs_xl.rds"))
-fesshole_pairs_xl %>% 
-  count(pairs, word1, word2, sort = TRUE) %>% 
-   filter(!word1 %in% tidytext::stop_words$word) %>%
-  filter(!word2 %in% tidytext::stop_words$word)
+fesshole_detailed %>% 
+  count(confess_id, month, year) %>% 
+  group_by(year, month) %>% 
+  summarise(sum(n))
   
   
 ```
 
+Now let's see it as a bar chart
 
+```{r}
+fesshole_detailed %>% 
+  count(timestamp, month, year) %>% 
+  group_by(year, month) %>% 
+  summarise(confess_count = sum(n)) %>% 
+  ungroup() %>% 
+  ggplot(aes(month, confess_count, fill = month)) + 
+    geom_col() +
+    facet_wrap(~ year) +
+    theme(axis.text.x = element_text(angle = 90))
+
+```
+
+## Which are the hours of the day that are most active?
+
+Let's find ou when people generally send the most confessions.  We can guess it  is the nighttime.
+
+
+```{r}
+fesshole_detailed %>% 
+  mutate(time = as_factor(lubridate::hour(timestamp))) %>% 
+  count(time) %>% 
+  rename(confess_count = n) %>% 
+  ggplot(aes(time, confess_count)) + 
+    geom_col(fill = "deepskyblue2") +
+    theme_classic()
+
+
+```
+
+As we can see, indeed the most confession are during 7pm, when people are out of work, or school.
+
+Being the lowest number of submissions sent at 4am
 
 
 
