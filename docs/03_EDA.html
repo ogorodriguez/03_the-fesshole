@@ -420,7 +420,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-26
+<strong>Last updated:</strong> 2020-12-29
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -511,16 +511,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetreefc7cdabcfc474f1df52ca51a6d6adc3735ab2773targetblankfc7cdaba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/fc7cdabcfc474f1df52ca51a6d6adc3735ab2773" target="_blank">fc7cdab</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree119677c67fd56d17343aabf60c2d72194d9f4cd9targetblank119677ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/119677c67fd56d17343aabf60c2d72194d9f4cd9" target="_blank">119677c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetreefc7cdabcfc474f1df52ca51a6d6adc3735ab2773targetblankfc7cdaba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomogorodriguez03thefessholetree119677c67fd56d17343aabf60c2d72194d9f4cd9targetblank119677ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/fc7cdabcfc474f1df52ca51a6d6adc3735ab2773" target="_blank">fc7cdab</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/ogorodriguez/03_the-fesshole/tree/119677c67fd56d17343aabf60c2d72194d9f4cd9" target="_blank">119677c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -534,6 +534,7 @@ Ignored files:
 
 Untracked files:
     Untracked:  code/03_load_df.R
+    Untracked:  data/Some code sentiment stop words xl
     Untracked:  data/fesshole_detailed.rds
     Untracked:  data/fesshole_index.rds
     Untracked:  data/fesshole_pairs.rds
@@ -578,6 +579,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/ogorodriguez/03_the-fesshole/blob/119677c67fd56d17343aabf60c2d72194d9f4cd9/analysis/03_EDA.Rmd" target="_blank">119677c</a>
+</td>
+<td>
+ogorodriguez
+</td>
+<td>
+2020-12-29
+</td>
+<td>
+Included the count of confessions per month and time of day
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/ogorodriguez/03_the-fesshole/e134e4678ccc5a24991672a77dbfe0c7d6236acd/docs/03_EDA.html" target="_blank">e134e46</a>
+</td>
+<td>
+ogorodriguez
+</td>
+<td>
+2020-12-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -740,9 +775,7 @@ Content 02 created, and several adjustments to source code as well as the data
 </div>
 <div id="initial-observations" class="section level2">
 <h2>Initial observations</h2>
-<p>The current status of the working file with the fesshole data is</p>
-<pre class="r"><code># Read in rds file if required
-fesshole_new &lt;- read_rds(here::here(&quot;data&quot;, &quot;fesshole_new.rds&quot;))</code></pre>
+<p>The current status of the working file with the fesshole data is found on the set <code>fesshole_new</code></p>
 <pre class="r"><code>fesshole_new %&gt;% 
   glimpse()</code></pre>
 <pre><code>Rows: 41,085
@@ -809,26 +842,68 @@ fesshole_new %&gt;%
  8 2019-09-16 21:14:21 &quot;I came home from school to find the dog had d…       109
  9 2019-09-14 01:19:07 &quot;In highschool (UK), thanks to some then undia…       108
 10 2019-07-04 22:46:48 &quot;My name is Frank. I&#39;m a 27-year-old Englishma…       100</code></pre>
-<p>Removing stopwords from the pairs of words</p>
-<pre class="r"><code>fesshole_pairs_xl &lt;- read_rds(here::here(&quot;data&quot;, &quot;fesshole_pairs_xl.rds&quot;))
-fesshole_pairs_xl %&gt;% 
-  count(pairs, word1, word2, sort = TRUE) %&gt;% 
-   filter(!word1 %in% tidytext::stop_words$word) %&gt;%
-  filter(!word2 %in% tidytext::stop_words$word)</code></pre>
-<pre><code># A tibble: 105,752 x 4
-   pairs           word1   word2       n
-   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt;
- 1 nee naw         nee     naw       279
- 2 naw nee         naw     nee       255
- 3 &lt;NA&gt;            &lt;NA&gt;    &lt;NA&gt;      241
- 4 priti patel     priti   patel     222
- 5 social media    social  media     214
- 6 turbo craig     turbo   craig     198
- 7 feel bad        feel    bad       166
- 8 feel guilty     feel    guilty    164
- 9 covid 19        covid   19        135
-10 happily married happily married   125
-# … with 105,742 more rows</code></pre>
+</div>
+</div>
+<div id="how-many-confessions" class="section level2">
+<h2>How many confessions?</h2>
+<p>There is a lot of counting going on when we do EDA.</p>
+<p>For instance, we can ask how many confessions were submitted in a given day, through the months, and also in years 2019 and 2020 so far.</p>
+<p>We could start by counting the number of confessions submitted every month ever since the beginning of the account in July 2019.</p>
+<div id="per-month" class="section level3">
+<h3>… per month</h3>
+<p>Let’s get the table count for each month</p>
+<pre class="r"><code>fesshole_detailed %&gt;% 
+  count(confess_id, month, year) %&gt;% 
+  group_by(year, month) %&gt;% 
+  summarise(sum(n))</code></pre>
+<pre><code># A tibble: 18 x 3
+# Groups:   year [2]
+    year month     `sum(n)`
+   &lt;dbl&gt; &lt;ord&gt;        &lt;int&gt;
+ 1  2019 July           346
+ 2  2019 August           5
+ 3  2019 September     1121
+ 4  2019 October       2185
+ 5  2019 November      1929
+ 6  2019 December      2833
+ 7  2020 January       3078
+ 8  2020 February      2367
+ 9  2020 March         2314
+10  2020 April         2559
+11  2020 May           2555
+12  2020 June          2270
+13  2020 July          3028
+14  2020 August        3160
+15  2020 September     2790
+16  2020 October       2964
+17  2020 November      3232
+18  2020 December      2349</code></pre>
+<p>Now let’s see it as a bar chart</p>
+<pre class="r"><code>fesshole_detailed %&gt;% 
+  count(timestamp, month, year) %&gt;% 
+  group_by(year, month) %&gt;% 
+  summarise(confess_count = sum(n)) %&gt;% 
+  ungroup() %&gt;% 
+  ggplot(aes(month, confess_count, fill = month)) + 
+    geom_col() +
+    facet_wrap(~ year) +
+    theme(axis.text.x = element_text(angle = 90))</code></pre>
+<p><img src="figure/03_EDA.Rmd/unnamed-chunk-8-1.png" width="1152" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="which-are-the-hours-of-the-day-that-are-most-active" class="section level2">
+<h2>Which are the hours of the day that are most active?</h2>
+<p>Let’s find ou when people generally send the most confessions. We can guess it is the nighttime.</p>
+<pre class="r"><code>fesshole_detailed %&gt;% 
+  mutate(time = as_factor(lubridate::hour(timestamp))) %&gt;% 
+  count(time) %&gt;% 
+  rename(confess_count = n) %&gt;% 
+  ggplot(aes(time, confess_count)) + 
+    geom_col(fill = &quot;deepskyblue2&quot;) +
+    theme_classic()</code></pre>
+<p><img src="figure/03_EDA.Rmd/unnamed-chunk-9-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>As we can see, indeed the most confession are during 7pm, when people are out of work, or school.</p>
+<p>Being the lowest number of submissions sent at 4am</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -852,7 +927,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] knitr_1.30          tidytext_0.2.6      plotly_4.9.2.2     
+ [1] knitr_1.30          tidytext_0.2.6.9000 plotly_4.9.2.2     
  [4] here_1.0.0          googlesheets4_0.2.0 yardstick_0.0.7    
  [7] workflows_0.2.1     tune_0.1.2          rsample_0.0.8      
 [10] recipes_0.1.15      parsnip_0.1.4       modeldata_0.1.0    
@@ -864,29 +939,28 @@ other attached packages:
 
 loaded via a namespace (and not attached):
  [1] googledrive_1.0.1  colorspace_2.0-0   ellipsis_0.3.1     class_7.3-17      
- [5] rprojroot_2.0.2    fs_1.5.0           rstudioapi_0.13    listenv_0.8.0     
- [9] furrr_0.2.1        SnowballC_0.7.0    prodlim_2019.11.13 fansi_0.4.1       
-[13] lubridate_1.7.9.2  xml2_1.3.2         codetools_0.2-16   splines_4.0.3     
-[17] jsonlite_1.7.1     pROC_1.16.2        dbplyr_2.0.0       compiler_4.0.3    
-[21] httr_1.4.2         backports_1.2.0    lazyeval_0.2.2     assertthat_0.2.1  
-[25] Matrix_1.2-18      cli_2.2.0          later_1.1.0.1      htmltools_0.5.0   
-[29] tools_4.0.3        gtable_0.3.0       glue_1.4.2         Rcpp_1.0.5        
-[33] cellranger_1.1.0   DiceDesign_1.8-1   vctrs_0.3.5        iterators_1.0.13  
-[37] timeDate_3043.102  gower_0.2.2        xfun_0.19          globals_0.14.0    
-[41] rvest_0.3.6        lifecycle_0.2.0    pacman_0.5.1       future_1.20.1     
-[45] MASS_7.3-53        ipred_0.9-9        hms_0.5.3          promises_1.1.1    
-[49] parallel_4.0.3     yaml_2.2.1         rpart_4.1-15       stringi_1.5.3     
-[53] tokenizers_0.2.1   foreach_1.5.1      lhs_1.1.1          lava_1.6.8.1      
-[57] rlang_0.4.9        pkgconfig_2.0.3    evaluate_0.14      lattice_0.20-41   
-[61] htmlwidgets_1.5.2  tidyselect_1.1.0   parallelly_1.21.0  plyr_1.8.6        
-[65] magrittr_2.0.1     R6_2.5.0           generics_0.1.0     DBI_1.1.0         
-[69] pillar_1.4.7       haven_2.3.1        whisker_0.4        withr_2.3.0       
-[73] survival_3.2-7     nnet_7.3-14        janeaustenr_0.1.5  modelr_0.1.8      
-[77] crayon_1.3.4       utf8_1.1.4         rmarkdown_2.5      grid_4.0.3        
-[81] readxl_1.3.1.9000  data.table_1.13.4  git2r_0.27.1       reprex_0.3.0      
-[85] digest_0.6.27      httpuv_1.5.4       munsell_0.5.0      GPfit_1.0-8       
-[89] viridisLite_0.3.0 </code></pre>
-</div>
+ [5] rprojroot_2.0.2    fs_1.5.0           rstudioapi_0.13    farver_2.0.3      
+ [9] listenv_0.8.0      furrr_0.2.1        SnowballC_0.7.0    prodlim_2019.11.13
+[13] fansi_0.4.1        lubridate_1.7.9.2  xml2_1.3.2         codetools_0.2-16  
+[17] splines_4.0.3      jsonlite_1.7.1     pROC_1.16.2        dbplyr_2.0.0      
+[21] compiler_4.0.3     httr_1.4.2         backports_1.2.0    lazyeval_0.2.2    
+[25] assertthat_0.2.1   Matrix_1.2-18      cli_2.2.0          later_1.1.0.1     
+[29] htmltools_0.5.0    tools_4.0.3        gtable_0.3.0       glue_1.4.2        
+[33] Rcpp_1.0.5         cellranger_1.1.0   DiceDesign_1.8-1   vctrs_0.3.6       
+[37] iterators_1.0.13   timeDate_3043.102  gower_0.2.2        xfun_0.19         
+[41] globals_0.14.0     rvest_0.3.6        lifecycle_0.2.0    pacman_0.5.1      
+[45] future_1.20.1      MASS_7.3-53        ipred_0.9-9        hms_0.5.3         
+[49] promises_1.1.1     parallel_4.0.3     yaml_2.2.1         rpart_4.1-15      
+[53] stringi_1.5.3      tokenizers_0.2.1   foreach_1.5.1      lhs_1.1.1         
+[57] lava_1.6.8.1       rlang_0.4.9        pkgconfig_2.0.3    evaluate_0.14     
+[61] lattice_0.20-41    labeling_0.4.2     htmlwidgets_1.5.2  tidyselect_1.1.0  
+[65] parallelly_1.21.0  plyr_1.8.6         magrittr_2.0.1     R6_2.5.0          
+[69] generics_0.1.0     DBI_1.1.0          pillar_1.4.7       haven_2.3.1       
+[73] whisker_0.4        withr_2.3.0        survival_3.2-7     nnet_7.3-14       
+[77] janeaustenr_0.1.5  modelr_0.1.8       crayon_1.3.4       utf8_1.1.4        
+[81] rmarkdown_2.5      grid_4.0.3         readxl_1.3.1.9000  data.table_1.13.4 
+[85] git2r_0.27.1       reprex_0.3.0       digest_0.6.27      httpuv_1.5.4      
+[89] munsell_0.5.0      GPfit_1.0-8        viridisLite_0.3.0 </code></pre>
 </div>
 </div>
 
