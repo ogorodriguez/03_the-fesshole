@@ -124,7 +124,7 @@ fesshole_detailed %>%
   ggplot(aes(month, confess_count, fill = month)) + 
     geom_col() +
     facet_wrap(~ year) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90)) 
 
 ```
 
@@ -147,7 +147,98 @@ fesshole_detailed %>%
 
 As we can see, indeed the most confession are during 7pm, when people are out of work, or school.
 
-Being the lowest number of submissions sent at 4am
+Being the lowest number of submissions sent at 4am.
+
+This is taking into account my system time settings.  Most of these confession may be from the UK.
+I ignore if these confessions are also coming from other English speaking countries where time difference
+is very considerate, since this may actually have an impact on the entries.
+
+## What is the average number of words per entry?
+
+We saw the largest confession has 230 words (more or less),  now let's see what is the average 
+number using a histogram and a boxplot.
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  ggplot(aes(wordcount)) + 
+    geom_histogram(bins = 45)
+
+```
+
+The vast majority of the confessions has about 35-40 words.  After the 60 count mark we start getting 
+fewer submissions with longer amount of words.
+
+Let's filter those confessions with 60 or more words.
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  filter(wordcount >= 60) %>% 
+  ggplot(aes(wordcount)) + 
+    geom_histogram(bins = 30)
+```
+
+It is considerable the reduction in the number of entries of 60 words or less.  A few more than 300 has 60 words or less.  The numbers having 100 up to the max of 230 is very very rare (even less then ten)
+
+Let's filter those submissions with 65 words or less:
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  filter(wordcount >= 65) %>% 
+  ggplot(aes(wordcount)) + 
+    geom_histogram(bins = 15)
+```
+The entries with a 100 words or more are actually below 5
+
+How about a box plot?
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  ggplot(aes(wordcount)) + 
+    geom_boxplot()
+```
+
+Lots of outliers after the 75 word count.  Really few long word confessions, here. Good to consider
+if eliminating those confessions is needed for further analysis.
+
+Here's the summary of just the word count
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  select(wordcount) %>% 
+  summary() 
+```
+
+The mean length is about 34 words per confession, where as 25% or less of the confessions are
+23 words or less.
+
+50% or less are 34 words long, and 75% or less are 46 words long. 
+
+That can be appreciated in the boxplot.
+
+Let's get the summary statistics using the `skimr`
+
+
+```{r}
+fesshole_new %>% 
+  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  select(wordcount) %>% 
+  skimr::skim()
+
+```
+
+
+
+
+
+
+
+
+
 
 
 
