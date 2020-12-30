@@ -232,6 +232,27 @@ fesshole_pairs_xl
 # write_rds(fesshole_pairs_xl, here::here("data", "fesshole_pairs_xl.rds"))
 ```
 
+I will create a dataset that includes the estimate of the word count of each confession.
+
+We can add a word count column that can estimate the number of words per confession using the
+`stringr::str_count()` function.
+
+We use `[\\w\']+` to identify words with apostrophes taking into account the number of letters 
+after the aposotrophy ([see here for reference.](https://stackoverflow.com/questions/8920145/count-the-number-of-all-words-in-a-string) )
+
+```{r}
+# Add a column with word counts
+fesshole_new %>% 
+  mutate(wordcount_est = stringr::str_count(confessions, '[\\w\']+')) %>% 
+  sample_n(5)
+  
+```
+
+```{r}
+# Comment out when an update is required.  Comment back in when done  
+# write_rds(fesshole_wordcount, here::here("data", "fesshole_wordcount.rds"))
+
+```
 
 
 

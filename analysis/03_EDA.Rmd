@@ -25,29 +25,14 @@ can identify the longest confession, and when it was submitted.
 
 ### The longest confession?
 
-Which one is the longest confession to date.
-
-We can add a word count column that can estimate the number of words per confession using the
-`stringr::str_count()` function.
-
-We use `[\\w\']+` to identify words with apostrophes taking into account the number of letters 
-after the aposotrophy ([see here for reference.](https://stackoverflow.com/questions/8920145/count-the-number-of-all-words-in-a-string) )
-
-```{r}
-# Add a column with word counts
-fesshole_new %>% 
-  mutate(wordcount_est = stringr::str_count(confessions, '[\\w\']+')) %>% 
-  sample_n(5)
-  
-```
+Which one is the longest confession to date.  We will use the `fesshole_wordcount` data set.
 
 
 Now let's find out the entry with the maximumn number of words
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount_est = stringr::str_count(confessions, '[\\w\']+')) %>% 
-  slice(which.max(wordcount_est)) %>% 
+fesshole_wordcount %>% 
+  slice(which.max(wordcount)) %>% 
   pull()
 ```
 
@@ -55,9 +40,8 @@ And when this entry was submitted...
 
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount_est = stringr::str_count(confessions, '[\\w\']+')) %>% 
-  slice(which.max(wordcount_est)) %>% 
+fesshole_wordcount %>% 
+  slice(which.max(wordcount)) %>% 
   select(timestamp) %>% 
   pull()
 
@@ -68,8 +52,7 @@ It was submitted on `r fesshole_new %>% mutate(wordcount_est = stringr::str_coun
 Here's the text of the longest confession: a very juicy account of identity theft, gay politicians, lots of alcohol and the Brexit.
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+fesshole_wordcount %>% 
   slice(which.max(wordcount)) %>% 
   select(confessions) %>% 
   pull()
@@ -84,8 +67,7 @@ That is why the number of words is marked as estimate.
 These are the top 10 longest confessions.
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+fesshole_wordcount %>% 
   arrange(desc(wordcount)) %>% 
   head(10)
 ```
@@ -159,8 +141,7 @@ We saw the largest confession has 230 words (more or less),  now let's see what 
 number using a histogram and a boxplot.
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+fesshole_wordcount %>% 
   ggplot(aes(wordcount)) + 
     geom_histogram(bins = 45)
 
@@ -172,8 +153,7 @@ fewer submissions with longer amount of words.
 Let's filter those confessions with 60 or more words.
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+fesshole_wordcount%>% 
   filter(wordcount >= 60) %>% 
   ggplot(aes(wordcount)) + 
     geom_histogram(bins = 30)
@@ -184,8 +164,7 @@ It is considerable the reduction in the number of entries of 60 words or less.  
 Let's filter those submissions with 65 words or less:
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+fesshole_wordcount %>% 
   filter(wordcount >= 65) %>% 
   ggplot(aes(wordcount)) + 
     geom_histogram(bins = 15)
@@ -195,8 +174,7 @@ The entries with a 100 words or more are actually below 5
 How about a box plot?
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+fesshole_wordcount%>% 
   ggplot(aes(wordcount)) + 
     geom_boxplot()
 ```
@@ -204,11 +182,12 @@ fesshole_new %>%
 Lots of outliers after the 75 word count.  Really few long word confessions, here. Good to consider
 if eliminating those confessions is needed for further analysis.
 
+### Summary statistics for word count
+
 Here's the summary of just the word count
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+fesshole_wordcount %>% 
   select(wordcount) %>% 
   summary() 
 ```
@@ -224,21 +203,108 @@ Let's get the summary statistics using the `skimr`
 
 
 ```{r}
-fesshole_new %>% 
-  mutate(wordcount = stringr::str_count(confessions, '[\\w\']+')) %>% 
+fesshole_wordcount %>% 
   select(wordcount) %>% 
   skimr::skim()
 
 ```
 
+## Other measures of centrality: skewness and kurtosis
+
+Seeing the histogram it looks that apart from the outliers, the distribution is fairly symmetrical.
+
+The value of skewness is:
+
+```{r}
+fesshole_wordcount %>% 
+  select(wordcount) %>% 
+  pull() %>% 
+  moments::skewness(na.rm = TRUE)
+```
+
+Which is pretty close to zero thus making it very symmetrical.
+
+The dataset used has `r nrow(fesshole_wordcount)`.
+
+Following the boxplot above, we can actually have the values of the outliers indicated.  This will
+help us identify the rows where they happy and see what the dataset looks like without them.
+
+```{r}
+fess_out <- boxplot.stats(fesshole_wordcount$wordcount)$out
+fess_out %>% sort()
+
+```
+
+We have `r length(fess_out)` outliers, and there are their values.  
+
+Our set has about 41000 entries, these percentage of outlier values is practically negligible.
+
+```{r}
+length(fess_out)/nrow(fesshole_wordcount)
+```
+
+It is clsse to zero too.  
+
+Let's remove the rows where these outlier values occur and see the distribution.
+
+First let's identify the rows where these values occur.
+
+```{r}
+out_ind <- which(fesshole_wordcount$wordcount %in% c(fess_out))
+out_ind
+
+```
+
+These are the rows where they occur in the dataset:
+
+```{r}
+fesshole_wordcount %>% 
+  slice(out_ind) %>% 
+  arrange(desc(wordcount))
+
+```
+
+Let's see the dataset without outliers and get the histograms and skewness.
+
+```{r}
+fesshole_wordcount %>% 
+  ungroup() %>% 
+  slice(-out_ind) %>% 
+  ggplot(aes(wordcount)) + 
+    geom_histogram(bins = 15, fill = "#0c4c8a") +
+    theme_minimal()
+```
+
+And the skewness value is
+
+```{r}
+fesshole_wordcount %>% 
+  slice(-out_ind) %>%
+  select(wordcount) %>% 
+  pull() %>% 
+  moments::skewness(na.rm = TRUE)
+
+```
+
+The skewness falls between the -0.5, and 0.5 range so it is still fairly symmetrical.
 
 
+The kurtosis value is:
 
+```{r}
+fesshole_wordcount %>% 
+  slice(-out_ind) %>%
+  select(wordcount) %>% 
+  pull() %>% 
+  moments::kurtosis(na.rm = TRUE)
 
+```
 
+This kurtosis value is pretty high.  Does it have to do with the fact that  I am using all of the population?
 
-
-
+According [to this article](https://www.spcforexcel.com/knowledge/basic-statistics/are-skewness-and-kurtosis-useful-statistics#skewness), there is no point in gettng the values of skewness and kurtosis since they
+vary a lot and are very dependent on size.  The histograms above can tell me much more information just by
+looking at them.  
 
 
 
