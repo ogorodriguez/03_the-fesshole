@@ -21,3 +21,5 @@ fesshole_pairs_xl <- readr::read_rds(here::here("data", "fesshole_pairs_xl.rds")
 # This dataset has the words singled out in one column with the index of its confession
 fesshole_words <- readr::read_rds(here::here("data", "fesshole_words.rds"))
 
+# This dataset has the estimated word count per submission
+fesshole_wordcount <- readr::read_rds(here::here("data", "fesshole_wordcount.rds"))
